@@ -19,6 +19,7 @@ def eucl_dist(x, y):
 def rbf_graph(x, y, sigma):
     diff = eucl_dist(x, y)
     g = torch.exp(diff / (-2.0 * sigma**2))
+    # 按行归一化
     return g / torch.sum(g, dim=1, keepdim=True)
 
 
@@ -38,7 +39,7 @@ def cosine_dist(x, y):
     xy_norm = x_norm.mm( y_norm.t() )
     return xy / xy_norm.add(1e-10)
 
-
+# 单位矩阵
 def neighbor_graph(x):
     neighbor_n = x.size(0)
     x1 = x.unsqueeze(0).expand(neighbor_n, -1)
