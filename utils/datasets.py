@@ -35,6 +35,7 @@ def split_relabel_data(np_labs, labels, label_per_class,
     np.random.shuffle(unlabed_idxs)
     ## relabel dataset
     for idx in unlabed_idxs:
+        # 把unlabel位置的label+1，*-1
         labels[idx] = encode_label(labels[idx])
 
     return labeled_idxs, unlabed_idxs
