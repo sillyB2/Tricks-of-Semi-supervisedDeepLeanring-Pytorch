@@ -57,6 +57,9 @@ def cosine_rampdown(rampdown_length, num_epochs):
 
 
 def exp_warmup(rampup_length, rampdown_length, num_epochs):
+    # num_epochs总步长
+    # rampdown_length下降步长
+    # rampup_length上升步长
     rampup = exp_rampup(rampup_length)
     rampdown = exp_rampdown(rampdown_length, num_epochs)
     def warpper(epoch):
