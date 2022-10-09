@@ -42,6 +42,10 @@ def label_smooth(one_hot_labels, epsilon=0.1):
     return ((1.-epsilon)*one_hot_labels + (epsilon/nClass))
 
 def uniform_prior_loss(logits):
+    “”“
+    求出的预测的分布是否均匀。每个类的所有样本取该类概率的平均是否均匀
+    和均匀分布的交叉熵损失，如果均匀那么就小
+    ”“”
     logit_avg = torch.mean(F.softmax(logits,dim=1), dim=0)
     num_classes, device = logits.size(1), logits.device
     p = torch.ones(num_classes).to(device) / num_classes
