@@ -8,6 +8,7 @@ from torch.utils.data.sampler import Sampler
 
 NO_LABEL = -1
 
+
 class DataSetWarpper(Dataset):
     """Enable dataset to output index of sample
     """
@@ -78,7 +79,9 @@ def iterate_eternally(indices, is_shuffle=True):
         while True:
             yield shuffleFunc(indices)
     return itertools.chain.from_iterable(infinite_shuffles())
-
+    
+    
+# 把iterable对象分成n等份（剩的不要了），然后返回n个元组。
 def grouper(iterable, n):
     args = [iter(iterable)]*n
     return zip(*args)
