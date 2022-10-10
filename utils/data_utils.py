@@ -81,7 +81,7 @@ def iterate_eternally(indices, is_shuffle=True):
     return itertools.chain.from_iterable(infinite_shuffles())
     
     
-# 把iterable对象分成n等份（剩的不要了），然后返回n个元组。
+# 把iterable对象每n个返回一个元组（剩的不要了）
 def grouper(iterable, n):
     args = [iter(iterable)]*n
     return zip(*args)
